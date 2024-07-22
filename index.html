@@ -10,9 +10,12 @@
 
     <body id="body">
         <img src="dvdlogo.png" class="dvd" id="alpha" alt="dvd logo">
-        <button onclick="clone()" type="button">hello</button>
-        <p>i fucking hate skibidis</p>
-        <input type="number" id="speed">
-        <button onclick="setSpeed()" type="button">ni</button>
+        <div id="menu" class="menu">
+            <img src="leave.png" onclick="exit()" class="leave" alt="leave button">
+            <button onclick="clone()" type="button">clone dvds</button>
+            <div class="break"></div>
+            <input type="number" id="speed">
+            <button onclick="setSpeed()" type="button">set a speed (3 default)</button>
+        </div>
     </body>
 </html>

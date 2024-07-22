@@ -1,6 +1,19 @@
 const x = [1], y = [1], changeX = [3], changeY = [3];
 var rate = 3;
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        console.log('ohpaeiwofpeuwf');
+        document.getElementById('menu').style.display = "flex";
+        document.getElementById('menu').style.animation = "fadeIn";
+        document.getElementById('menu').style.animationDuration = "2s";
+    }
+});
+
+function exit() {
+    document.getElementById('menu').style.display = "none";
+}
+
 function changeColor(dvd) {
     let a, b, c;
     a = Math.floor(Math.random() * 256);
@@ -10,15 +23,14 @@ function changeColor(dvd) {
 }
 
 function clone() {
-    console.log('bro what the sigma')
     let p = document.getElementById('alpha');
     let p_prime = p.cloneNode(true);
     p_prime.id = "beta";
     p.after(p_prime);
     x.push(Math.random() * (window.innerWidth-400));
     y.push(Math.random() * (window.innerHeight-200));
-    changeX.push(3);
-    changeY.push(3);
+    changeX.push(rate);
+    changeY.push(rate);
 }
 
 function run() {
@@ -30,7 +42,7 @@ function run() {
 }
 
 function setSpeed() {
-    let speed = document.getElementById('speed').value;
+    let speed = parseInt(document.getElementById('speed').value);
     rate = speed;
     for (let s in changeX) {
         changeX[s] *= (speed/changeX[s]);
@@ -47,8 +59,6 @@ function move(dvd, current) {
     x[current] += changeX[current];
     y[current] += changeY[current];
     if (y[current] <= -50) {
-        console.log('bruuuh');
-        console.log(y[current]);
         changeY[current] = rate;
         changeColor(dvd);
     } else if (y[current] > window.innerHeight-200) {
