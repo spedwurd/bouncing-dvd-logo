@@ -1,4 +1,4 @@
-let x = 1000, y = 1000;
+let x = 1, y = 1, changeX = 3, changeY = 3;
 
 function changeColor() {
   let a, b, c;
@@ -9,15 +9,26 @@ function changeColor() {
 }
 
 function move() {
-    document.getElementById('dvd').style.top = x + 'px'; 
-    document.getElementById('dvd').style.left = y + 'px';
+    document.getElementById('dvd').style.top = y + 'px'; 
+    document.getElementById('dvd').style.left = x + 'px';
     x += changeX;
     y += changeY;
-    if (x < -53) {
+    if (y < -50) {
+        changeY = 3;
+        changeColor();
+    } else if (y > window.innerHeight-200) {
+        changeY = -3;
+        changeColor();
+    }
+    if (x < -50) {
         changeX = 3;
-    } else if (x >)
+        changeColor();
+    } else if (x > window.innerWidth-400) {
+        changeX = -3;
+        changeColor();
+    }
 }
 
 window.onload = changeColor;
 
-// setInterval(move, 10);
+setInterval(move, 10);
